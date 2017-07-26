@@ -6,57 +6,24 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 
 
-<body class="demo">
-      <!-- NAVBAR
-         ============================== -->
-      <div class="my-nav">
-         <div class="navbar navbar-default navbar-fixed-top scrollspy_menu mnav navbar__initial" role="navigation">
-            <div class="container">
-               <div class="navbar-header mnav">
-                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-                  <a class="navbar-brand mnav" href="#"><i class="fa fa-pied-piper-alt"></i> RailsGame <i class="fa fa-pied-piper-pp"></i></a>
-               </div>
-               <div class="navbar-collapse collapse">
-                  <ul class="fullpage__nav nav navbar-nav navbar-right mnav">
-                     <li><a href="#home">Tournaments</a></li>
-                     <li><a href="#about">Players</a></li>
-                     <li><a href="#service">Games</a></li>
-                     <li><a href="#product">Matches</a></li>
-                     <li><a href="#portfolio">View stats</a></li>
-                     <li><a href="#plan">Edit profile</a></li>
-                     <li><% if user_signed_in? %>
-         <%= link_to destroy_user_session_path, method: :delete do %>
-            <button class="nav-but btn"><%= t(".sign_out", default: "LOG OUT") %></button>
-            <% end %>
-      <% else %>
-      <%= link_to new_user_session_path do %>
-            <button class="nav-but btn"><%= t(".sign_in", default: "LOGIN") %></button>
-            <% end %>
-    <% end %></li>
+<body>
+  <br><br>
+  <%= render'shared/navbar' %>
 
-                  </ul>
-               </div>
+  <br><br>
 
-            </div>
-         </div>
-      </div>
-
-<br><br>
-
- <p class="notice"><%= notice %></p>
- <p class="alert"><%= alert %></p>
-
-<%= yield %>
+  <%= render 'shared/flashes' %>
+  <%= yield %>
 
 </body>
 </html>

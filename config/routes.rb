@@ -6,6 +6,7 @@ Listgames::Application.routes.draw do
   get "pages/contact"
 
   resources :tournaments
+  resources :games
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,18 @@
+<h2>Games</h2>
+<br><br><br>
+<% @games.each do  |game| %>
+
+<h3> <%= game.name %> </h3>
+
+<%= link_to "See", game_path(game) %>
+<%= link_to "Delete", game_path(game), method: :delete, data: {
+  confirm: "Are you sure?" } %>
+<br><br>
+
+
+<% end %>
+
+<%= link_to "Add a new game", new_game_path %>
+
+
+

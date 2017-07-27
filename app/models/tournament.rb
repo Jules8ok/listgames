@@ -1,6 +1,6 @@
 class Tournament < ActiveRecord::Base
-  belongs_to :players
-  belongs_to :games
-  belongs_to :matchs
+  has_many :players
+  has_many :games
+  has_many :matchs
   attr_accessible :address, :date, :maxplayer, :name, :result
 end

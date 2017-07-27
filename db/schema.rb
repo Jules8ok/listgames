@@ -11,7 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170726100550) do
+ActiveRecord::Schema.define(:version => 20170727092044) do
+
+  create_table "tournaments", :force => true do |t|
+    t.string   "name"
+    t.integer  "maxplayer"
+    t.string   "address"
+    t.integer  "players_id"
+    t.integer  "games_id"
+    t.string   "date"
+    t.integer  "matchs_id"
+    t.string   "result"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "tournaments", ["games_id"], :name => "index_tournaments_on_games_id"
+  add_index "tournaments", ["matchs_id"], :name => "index_tournaments_on_matchs_id"
+  add_index "tournaments", ["players_id"], :name => "index_tournaments_on_players_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

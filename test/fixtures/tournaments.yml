@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  maxplayer: 1
+  address: MyString
+  players: 
+  games: 
+  date: MyString
+  matchs: 
+  result: MyString
+
+two:
+  name: MyString
+  maxplayer: 1
+  address: MyString
+  players: 
+  games: 
+  date: MyString
+  matchs: 
+  result: MyString

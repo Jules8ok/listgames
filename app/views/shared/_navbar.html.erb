@@ -1,33 +1,33 @@
 <div class="demo">
  <div class="my-nav">
-         <div class="navbar navbar-default navbar-fixed-top scrollspy_menu mnav navbar__initial" role="navigation">
-            <div class="container">
-               <div class="navbar-header mnav">
-                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-                  <a class="navbar-brand mnav" href="#"><i class="fa fa-pied-piper-alt"></i> RailsGame <i class="fa fa-pied-piper-pp"></i></a>
-               </div>
-               <div class="navbar-collapse collapse">
-                  <ul class="fullpage__nav nav navbar-nav navbar-right mnav">
-                     <li> <%= link_to "Tournaments", tournaments_path %></li>
-                     <li><a href="#about">Players</a></li>
-                     <li><%= link_to "Games", games_path %></li>
-                     <li><a href="#product">Matchs</a></li>
-                     <li><a href="#portfolio">View stats</a></li>
-                     <li><a href="#plan">Edit profile</a></li>
-                     <li><% if user_signed_in? %>
+   <div class="navbar navbar-default navbar-fixed-top scrollspy_menu mnav navbar__initial" role="navigation">
+    <div class="container">
+     <div class="navbar-header mnav">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <a class="navbar-brand mnav" href="#"><i class="fa fa-pied-piper-alt"></i> RailsGame <i class="fa fa-pied-piper-pp"></i></a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="fullpage__nav nav navbar-nav navbar-right mnav">
+       <li> <%= link_to "Tournaments", tournaments_path %></li>
+       <li><a href="#about">Players</a></li>
+       <li><%= link_to "Games", games_path %></li>
+       <li><a href="#product">Matchs</a></li>
+       <li><a href="#portfolio">View stats</a></li>
+       <li><a href="#plan">Edit profile</a></li>
+       <li><% if user_signed_in? %>
          <%= link_to destroy_user_session_path, method: :delete do %>
-            <%= t(".sign_out", default: "LOG OUT") %>
-            <% end %>
-      <% else %>
-      <%= link_to new_user_session_path do %>
-            <button class="nav-but btn"><%= t(".sign_in", default: "LOGIN") %></button>
-            <% end %>
-    <% end %></li>
+         <%= t(".sign_out", default: "LOG OUT") %>
+         <% end %>
+         <% else %>
+         <%= link_to new_user_session_path do %>
+         <button class="nav-but btn"><%= t(".sign_in", default: "LOGIN") %></button>
+         <% end %>
+         <% end %></li>
 
-                  </ul>
-               </div>
+       </ul>
+     </div>
 
-            </div>
-         </div>
-      </div>
-      </div>
+   </div>
+ </div>
+</div>
+</div>

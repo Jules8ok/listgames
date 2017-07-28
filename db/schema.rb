@@ -11,33 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170727135449) do
+ActiveRecord::Schema.define(:version => 20170728123733) do
 
-  create_table "games", :force => true do |t|
-    t.string   "name"
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "tournament_id"
     t.integer  "player_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
-
-  add_index "games", ["player_id"], :name => "index_games_on_player_id"
 
   create_table "tournaments", :force => true do |t|
     t.string   "name"
-    t.integer  "maxplayer"
+    t.integer  "maxuser"
     t.string   "address"
-    t.integer  "players_id"
-    t.integer  "games_id"
+    t.integer  "user_id"
     t.string   "date"
-    t.integer  "matchs_id"
     t.string   "result"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "tournaments", ["games_id"], :name => "index_tournaments_on_games_id"
-  add_index "tournaments", ["matchs_id"], :name => "index_tournaments_on_matchs_id"
-  add_index "tournaments", ["players_id"], :name => "index_tournaments_on_players_id"
+  add_index "tournaments", ["user_id"], :name => "index_tournaments_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -52,6 +46,8 @@ ActiveRecord::Schema.define(:version => 20170727135449) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "address"
+    t.boolean  "admin"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

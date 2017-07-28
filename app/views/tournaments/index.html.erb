@@ -1,19 +1,25 @@
-<h2>Tournaments</h2>
+<h2 class= "text-center">Tournaments</h2>
 <br><br><br>
-<% @tournaments.each do  |tournament| %>
+
+
+
+<div class="text-center">
+
+  <% @tournaments.each do  |tournament| %>
+
 
 <h3> <%= tournament.name %> </h3>
-<p> Max players : <%= tournament.maxplayer %> </p>
-<p> <%= tournament.address %> </p>
-<%= link_to "See", tournament_path(tournament) %>
-<%= link_to "Delete", tournament_path(tournament), method: :delete, data: {
-  confirm: "Are you sure?" } %>
-  <br><br>
+    <p> Max players : <%= tournament.maxplayer %> </p>
+    <p> <%= tournament.address %> </p>
+    <%= link_to "See", tournament_path(tournament) %>
+    <%= link_to "Delete", tournament_path(tournament), method: :delete, data: {
+      confirm: "Are you sure?" } %>
 
 
-  <% end %>
+<% end %>
 
-  <%= link_to "Add a new tournament", new_tournament_path %>
+</div>
 
 
 
+<%= link_to "Add a new tournament", new_tournament_path %>

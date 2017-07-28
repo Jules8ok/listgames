@@ -2,20 +2,16 @@
 
 one:
   name: MyString
-  maxplayer: 1
+  maxuser: 1
   address: MyString
-  players: 
-  games: 
+  user: 
   date: MyString
-  matchs: 
   result: MyString
 
 two:
   name: MyString
-  maxplayer: 1
+  maxuser: 1
   address: MyString
-  players: 
-  games: 
+  user: 
   date: MyString
-  matchs: 
   result: MyString

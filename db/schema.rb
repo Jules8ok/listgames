@@ -11,7 +11,63 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170728123733) do
+ActiveRecord::Schema.define(:version => 20170731090346) do
+
+  create_table "game_tournement_joins", :force => true do |t|
+    t.integer  "game_id"
+    t.integer  "tournament_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "game_tournement_joins", ["game_id"], :name => "index_game_tournement_joins_on_game_id"
+  add_index "game_tournement_joins", ["tournament_id"], :name => "index_game_tournement_joins_on_tournament_id"
+
+  create_table "games", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.integer  "matche_id"
+    t.integer  "game_tournament_join_id"
+    t.integer  "tournament_id"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "games", ["game_tournament_join_id"], :name => "index_games_on_game_tournament_join_id"
+  add_index "games", ["matche_id"], :name => "index_games_on_matche_id"
+  add_index "games", ["tournament_id"], :name => "index_games_on_tournament_id"
+
+  create_table "matches", :force => true do |t|
+    t.string   "score"
+    t.integer  "user_id"
+    t.integer  "tournament_id"
+    t.integer  "game_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "matches", ["game_id"], :name => "index_matches_on_game_id"
+  add_index "matches", ["tournament_id"], :name => "index_matches_on_tournament_id"
+  add_index "matches", ["user_id"], :name => "index_matches_on_user_id"
+
+  create_table "tournaments", :force => true do |t|
+    t.string   "name"
+    t.date     "date"
+    t.string   "address"
+    t.integer  "max_player"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "user_matche_joins", :force => true do |t|
+    t.integer  "matche_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "user_matche_joins", ["matche_id"], :name => "index_user_matche_joins_on_matche_id"
+  add_index "user_matche_joins", ["user_id"], :name => "index_user_matche_joins_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

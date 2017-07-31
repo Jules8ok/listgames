@@ -8,4 +8,6 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   has_many :subscriptions
   has_many :tournaments, through: :subscriptions
+  has_many :user_matche_joins, :dependent => :delete_all
+  has_many :matche, through: :user_matche_joins
 end

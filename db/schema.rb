@@ -13,26 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20170728123733) do
 
-  create_table "subscriptions", :force => true do |t|
-    t.integer  "tournament_id"
-    t.integer  "player_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  create_table "tournaments", :force => true do |t|
-    t.string   "name"
-    t.integer  "maxuser"
-    t.string   "address"
-    t.integer  "user_id"
-    t.string   "date"
-    t.string   "result"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "tournaments", ["user_id"], :name => "index_tournaments_on_user_id"
-
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false

@@ -5,6 +5,7 @@ Listgames::Application.routes.draw do
   get "pages/home"
   get "pages/contact"
 
+  resources :matches, only:[:index, :show, :edit, :destroy, :update]
   resources :tournaments
   resources :games
     resources :users

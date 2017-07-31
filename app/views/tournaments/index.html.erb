@@ -8,18 +8,43 @@
   <% @tournaments.each do  |tournament| %>
 
 
-<h3> <%= tournament.name %> </h3>
-    <p> Max user : <%= tournament.maxuser %> </p>
-    <p> <%= tournament.address %> </p>
+
+
     <%= link_to "See", tournament_path(tournament) %>
     <%= link_to "Delete", tournament_path(tournament), method: :delete, data: {
       confirm: "Are you sure?" } %>
 
 
+
+<br>
+
+<div class="flip">
+        <div class="cardi">
+            <div class="face front">
+               <%= tournament.name %>
+            </div>
+            <div class="face back">
+              <div class="address"><%= tournament.address %></div>
+            </div>
+        </div>
+    </div>
+
+
 <% end %>
 
+
+
+<br><br>
+
+<%= link_to "Add a new tournament", new_tournament_path %>
 </div>
 
 
-
-<%= link_to "Add a new tournament", new_tournament_path %>
+<script type="text/javascript">
+    $('.flip').click(function(){
+        $(this).find('.cardi').addClass('flipped').mouseleave(function(){
+            $(this).removeClass('flipped');
+        });
+        return false;
+    });
+</script>

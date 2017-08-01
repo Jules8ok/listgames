@@ -17,36 +17,42 @@ user.email = 'test@example.com'
 user.password = 'valid_password'
 user.password_confirmation = 'valid_password'
 user.address = "test street n°23 brussels "
+user.admin = true
 user.save!
 user = User.new
 user.email = 'test1@example.com'
 user.password = 'valid_password'
 user.password_confirmation = 'valid_password'
 user.address = "test1 street n°23 brussels "
+user.admin = true
 user.save!
 user = User.new
 user.email = 'test2@example.com'
 user.password = 'valid_password'
 user.password_confirmation = 'valid_password'
 user.address = "test2 street n°23 brussels "
+user.admin = true
 user.save!
 user = User.new
 user.email = 'test3@example.com'
 user.password = 'valid_password'
 user.password_confirmation = 'valid_password'
 user.address = "test3 street n°23 brussels "
+user.admin = true
 user.save!
 user = User.new
 user.email = 'test4@example.com'
 user.password = 'valid_password'
 user.password_confirmation = 'valid_password'
 user.address = "test4 street n°23 brussels "
+user.admin = true
 user.save!
 user = User.new
 user.email = 'test5@example.com'
 user.password = 'valid_password'
 user.password_confirmation = 'valid_password'
 user.address = "test5 street n°23 brussels "
+user.admin = true
 user.save!
 
 

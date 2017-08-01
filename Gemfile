@@ -25,6 +25,7 @@ gem 'devise'
 gem 'simple_form'
 gem 'omniauth-facebook'
 gem "figaro"
+gem "cancancan"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

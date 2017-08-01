@@ -2,7 +2,7 @@ class MatchesController < ApplicationController
   before_filter :set_match, only: [:show, :edit, :update, :destroy]
 
   def index
-    @matches = Matche.all.sort_by{|m| m.tournament.name ? m.tournament.name: m.videogame.title}
+    @matches = Matche.all
   end
 
   def show

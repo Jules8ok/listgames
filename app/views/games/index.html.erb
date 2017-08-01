@@ -10,6 +10,7 @@
           <% @games.each do  |game| %>
 
           <h3> <%= game.title %> </h3>
+          <p><%= game.description %></p>
 
           <%= link_to "See", game_path(game) %>
           <%= link_to "Delete", game_path(game), method: :delete, data: {

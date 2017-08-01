@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170801085021) do
+ActiveRecord::Schema.define(:version => 20170801125035) do
 
   create_table "game_tournement_joins", :force => true do |t|
     t.integer  "game_id"
@@ -26,16 +26,9 @@ ActiveRecord::Schema.define(:version => 20170801085021) do
   create_table "games", :force => true do |t|
     t.string   "title"
     t.string   "description"
-    t.integer  "matche_id"
-    t.integer  "game_tournament_join_id"
-    t.integer  "tournament_id"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
-
-  add_index "games", ["game_tournament_join_id"], :name => "index_games_on_game_tournament_join_id"
-  add_index "games", ["matche_id"], :name => "index_games_on_matche_id"
-  add_index "games", ["tournament_id"], :name => "index_games_on_tournament_id"
 
   create_table "matches", :force => true do |t|
     t.string   "score"

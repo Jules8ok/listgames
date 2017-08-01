@@ -8,7 +8,7 @@
 
 Tournament.destroy_all
 Tournament.create(name: "Christmas Tournament", max_player: 5, address: " 22 drève pittoresque 1640 Rhode-Saint genèse Belgique", date: "25 decembre 2017")
-Tournament.create(name: "Junior Tournament", max_player: 4, address: " 124 rue de l'été 1050 Ixelles Belgique", date: "06 mai 2017")
+Tournament.create(name: "Junior Tournament", max_player: 4, address: " 124 rue de l'été 1050 Ixelles Belgique", date: "6 may 2019")
 Tournament.create(name: "Senior Tournament", max_player: 3, address: " 13 rue Jules Colle Waterloo", date: "27 decembre 2018")
 
 User.destroy_all
@@ -35,6 +35,18 @@ user.email = 'test3@example.com'
 user.password = 'valid_password'
 user.password_confirmation = 'valid_password'
 user.address = "test3 street n°23 brussels "
+user.save!
+user = User.new
+user.email = 'test4@example.com'
+user.password = 'valid_password'
+user.password_confirmation = 'valid_password'
+user.address = "test4 street n°23 brussels "
+user.save!
+user = User.new
+user.email = 'test5@example.com'
+user.password = 'valid_password'
+user.password_confirmation = 'valid_password'
+user.address = "test5 street n°23 brussels "
 user.save!
 
 

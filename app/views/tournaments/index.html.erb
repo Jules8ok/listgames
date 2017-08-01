@@ -1,3 +1,4 @@
+
 <h2 class= "text-center">Tournaments</h2>
 <br><br><br>
 
@@ -8,43 +9,43 @@
   <% @tournaments.each do  |tournament| %>
 
 
+    <br>
 
-
-    <%= link_to "See", tournament_path(tournament) %>
-    <%= link_to "Delete", tournament_path(tournament), method: :delete, data: {
-      confirm: "Are you sure?" } %>
-
-
-
-<br>
-
-<div class="flip">
-        <div class="cardi">
-            <div class="face front">
-               <%= tournament.name %>
-            </div>
-            <div class="face back">
-              <div class="address"><%= tournament.address %></div>
-            </div>
-        </div>
+    <div class="flip">
+      <div class="cardi">
+        <div class="face front">
+         <%= tournament.name %>
+       </div>
+       <div class="face back">
+       <div class="address"><%= tournament.date %></div>
+      </div>
     </div>
+  </div>
 
 
-<% end %>
+
+
+  <%= link_to "See", tournament_path(tournament) %>
+  <%= link_to "Delete", tournament_path(tournament), method: :delete, data: {
+    confirm: "Are you sure?" } %>
 
 
 
-<br><br>
+  <% end %>
 
-<%= link_to "Add a new tournament", new_tournament_path %>
+
+
+  <br><br>
+
+  <%= link_to "Add a new tournament", new_tournament_path %>
 </div>
 
 
 <script type="text/javascript">
-    $('.flip').click(function(){
-        $(this).find('.cardi').addClass('flipped').mouseleave(function(){
-            $(this).removeClass('flipped');
-        });
-        return false;
+  $('.flip').click(function(){
+    $(this).find('.cardi').addClass('flipped').mouseleave(function(){
+      $(this).removeClass('flipped');
     });
+    return false;
+  });
 </script>

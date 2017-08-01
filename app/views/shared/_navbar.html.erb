@@ -17,10 +17,15 @@
        <li><% if user_signed_in? %>
          <%= link_to destroy_user_session_path, method: :delete do %>
          <%= t(".sign_out", default: "LOG OUT") %>
+         <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+         <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+
+
          <% end %>
          <% else %>
          <%= link_to new_user_session_path do %>
          <button class="nav-but btn"><%= t(".sign_in", default: "LOGIN") %></button>
+
          <% end %>
          <% end %></li>
 

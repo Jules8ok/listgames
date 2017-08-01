@@ -1,1 +1,10 @@
+
+
+
+
+<% if user_signed_in? %>
+<h1>Welcome <strong><%= current_user.first_name %></strong></h1>
+<% else %>
 <h1>Welcome <strong>stranger</strong></h1>
+<% end %>
+

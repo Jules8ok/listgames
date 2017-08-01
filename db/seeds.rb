@@ -14,48 +14,48 @@ Tournament.create(name: "Senior Tournament", max_player: 3, address: " 13 rue Ju
 User.destroy_all
 user = User.new
 user.email = 'test@example.com'
-user.password = 'valid_password'
-user.password_confirmation = 'valid_password'
+user.password = 'password'
+user.password_confirmation = 'password'
 user.address = "test street n°23 brussels "
 user.first_name = "Pierre"
 user.admin = true
 user.save!
 user = User.new
 user.email = 'test1@example.com'
-user.password = 'valid_password'
-user.password_confirmation = 'valid_password'
+user.password = 'password'
+user.password_confirmation = 'password'
 user.address = "test1 street n°23 brussels "
 user.first_name = "George"
 user.admin = true
 user.save!
 user = User.new
 user.email = 'test2@example.com'
-user.password = 'valid_password'
-user.password_confirmation = 'valid_password'
+user.password = 'password'
+user.password_confirmation = 'password'
 user.address = "test2 street n°23 brussels "
 user.first_name = "Ernest"
 user.admin = true
 user.save!
 user = User.new
 user.email = 'test3@example.com'
-user.password = 'valid_password'
-user.password_confirmation = 'valid_password'
+user.password = 'password'
+user.password_confirmation = 'password'
 user.address = "test3 street n°23 brussels "
 user.first_name = "Alban"
 user.admin = true
 user.save!
 user = User.new
 user.email = 'test4@example.com'
-user.password = 'valid_password'
-user.password_confirmation = 'valid_password'
+user.password = 'password'
+user.password_confirmation = 'password'
 user.address = "test4 street n°23 brussels "
 user.first_name = "Antoine"
 user.admin = true
 user.save!
 user = User.new
 user.email = 'test5@example.com'
-user.password = 'valid_password'
-user.password_confirmation = 'valid_password'
+user.password = 'password'
+user.password_confirmation = 'password'
 user.address = "test5 street n°23 brussels "
 user.first_name = "Kevin"
 user.admin = true
@@ -68,7 +68,23 @@ Game.create(title: "SIMS III + extra dog", description: "Construction, family, f
 Game.create(title: "Counter Strike", description: "War game, very agressif, blood, -18!" )
 Game.create(title: "GTA VI", description: "The famous GTA VI, arcade, -18!" )
 
-Matche.create(game_id: 1, tournament_id: 1, user_id: 2)
+
+Matche.destroy_all
+match1 = Matche.new
+match1.score = "1-0"
+match1.game = Game.find_by_title("Call Of Duty")
+match1.users= [User.find_by_email("test5@example.com"), User.find_by_email("test4@example.com") ]
+match1.save!
+match2 = Matche.new
+match2.score = "2-0"
+match2.game = Game.find_by_title("League Of Legend")
+match2.users= [User.find_by_email("test2@example.com"), User.find_by_email("test3@example.com") ]
+match2.save!
+match3 = Matche.new
+match3.score = "3-1"
+match3.game = Game.find_by_title("Counter Strike")
+match3.users= [User.find_by_email("test@example.com"), User.find_by_email("test1@example.com") ]
+match3.save!
 
 
 

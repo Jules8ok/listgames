@@ -8,6 +8,8 @@
 
 <%= f.label :name, "How many players?" %>
 <%= f.number_field :max_player %>
+<% @games = Game.all %>
+<br><br>
 
 <%= f.submit %>
 

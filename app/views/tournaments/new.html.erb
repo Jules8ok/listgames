@@ -10,7 +10,12 @@
 <%= f.number_field :max_player %>
 <% @games = Game.all %>
 <br><br>
-
+<% @games.each do |game| %>
+<%= f.label :name, game.title %>
+<%= check_box_tag "games[]", game.id%>
+<br>
+<% end %>
+<br><br>
 <%= f.submit %>
 
 <% end %>

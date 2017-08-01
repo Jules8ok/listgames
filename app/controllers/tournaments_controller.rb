@@ -14,7 +14,9 @@ class TournamentsController < ApplicationController
   end
 
   def create
-    Tournament.create(params[:tournament])
+    @tournament = Tournament.new(params[:tournament])
+    @tournament.games = Game.where("id in (?)", params[:games])
+    @tournament.save!
     redirect_to tournaments_path
   end
 

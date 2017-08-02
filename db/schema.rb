@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170802080217) do
+ActiveRecord::Schema.define(:version => 20170802132623) do
 
   create_table "game_tournement_joins", :force => true do |t|
     t.integer  "game_id"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20170802080217) do
     t.string   "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "photo"
   end
 
   create_table "matches", :force => true do |t|

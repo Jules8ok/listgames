@@ -3,10 +3,17 @@ class TournamentsController < ApplicationController
 
   def index
     @tournaments = Tournament.all
+
+
+    @hash = Gmaps4rails.build_markers(@tournaments) do |tournament, marker|
+      marker.lat tournament.latitude
+      marker.lng tournament.longitude
+    end
   end
 
   def show
     @tournament = Tournament.find(params[:id])
+    @tournament_coordinates = { lat: @tournament.latitude, lng: @tournament.longitude }
   end
 
   def new

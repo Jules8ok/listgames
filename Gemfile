@@ -27,6 +27,14 @@ gem 'omniauth-facebook'
 gem "figaro"
 gem "cancancan"
 gem "geocoder"
+gem "gmaps4rails"
+gem 'cloudinary'
+gem 'carrierwave', '~> 0.11.2'
+
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

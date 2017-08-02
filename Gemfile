@@ -26,6 +26,7 @@ gem 'simple_form'
 gem 'omniauth-facebook'
 gem "figaro"
 gem "cancancan"
+gem "geocoder"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

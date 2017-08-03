@@ -24,11 +24,11 @@
   <p class="info"> <span class="strong">Address;</span><%= @tournament.address %><br>
     <span class="strong">Max player;</span> <%= @tournament.max_player %> <br> <span class="strong">Date;</span> <%= @tournament.date %></p>
 
-
+<%= link_to "Delete", tournament_path(@tournament), method: :delete, data: {
+      confirm: "Are you sure?" } %>
     <br>
 
-
-
+    </div>
   <%= link_to "Back to tournaments", tournaments_path %>
 <br>
 

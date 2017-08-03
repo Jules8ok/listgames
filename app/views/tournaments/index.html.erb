@@ -1,49 +1,34 @@
 
 <h2 class= "text-center">Tournaments</h2>
 <br><br><br>
-
-
-
-
-
 <div class="text-center">
-
-  <% @tournaments.each do  |tournament| %>
-
-
-  <br>
-
-  <div class="flip">
-    <div class="cardi">
-      <div class="face front">
-       <%= tournament.name %>
-     </div>
-     <div class="face back">
-       <div class="address"><%= tournament.date %></div>
+  <div class="container02">
+    <% @tournaments.each do  |tournament| %>
+  <div class="see">
+  <div>
+    <div class="flip">
+      <div class="cardi">
+        <div class="face front">
+         <%= tournament.name %>
+       </div>
+       <div class="face back">
+         <div class="address"><%= tournament.date %></div>
+       </div>
      </div>
    </div>
- </div>
-
-
-
-
- <%= link_to "See", tournament_path(tournament) %>
- <%= link_to "Delete", tournament_path(tournament), method: :delete, data: {
-  confirm: "Are you sure?" } %>
-
-  <% end %>
-
-
-
-  <br><br>
-
-  <%= link_to "Add a new tournament", new_tournament_path %>
 </div>
+<div>
+   <%= link_to "See", tournament_path(tournament) %>
 
+   </div>
+   </div>
+   <% end %>
+ </div>
+ <br><br>
+ <%= link_to "Add a new tournament", new_tournament_path %>
+</div>
 <br>
-
 <div id="map" style="width: 100%; height: 400px;"></div>
-
 <% content_for(:after_js) do %>
 <%= javascript_tag do %>
 $(document).ready(function() {
@@ -61,7 +46,6 @@ handler.getMap().setZoom(14);
 });
 <% end %>
 <% end %>
-
 <script type="text/javascript">
   $('.flip').click(function(){
     $(this).find('.cardi').addClass('flipped').mouseleave(function(){

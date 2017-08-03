@@ -7,9 +7,18 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Tournament.destroy_all
-Tournament.create(name: "Christmas Tournament", max_player: 5, address: " 22 drève pittoresque 1640 Rhode-Saint genèse Belgique", date: "25 decembre 2017")
+Tournament.create(name: "May Tournament", max_player: 5, address: " 22 drève pittoresque 1640 Rhode-Saint genèse Belgique", date: "25 decembre 2017")
 Tournament.create(name: "Junior Tournament", max_player: 4, address: " 124 rue de l'été 1050 Ixelles Belgique", date: "6 may 2019")
 Tournament.create(name: "Senior Tournament", max_player: 3, address: " 13 rue Jules Colle Waterloo", date: "27 decembre 2018")
+Tournament.create(name: "May Tournament", max_player: 5, address: " 22 drève pittoresque 1640 Rhode-Saint genèse Belgique", date: "25 decembre 2017")
+Tournament.create(name: "June Tournament", max_player: 4, address: " 124 rue de l'été 1050 Ixelles Belgique", date: "6 may 2019")
+Tournament.create(name: "Week Tournament", max_player: 3, address: " Ixelles", date: "27 decembre 2018")
+Tournament.create(name: "The Tournament", max_player: 5, address: " Uccle", date: "25 decembre 2017")
+Tournament.create(name: "Yolo Tournament", max_player: 4, address: " Rhode-Saint-Genèse", date: "6 may 2019")
+Tournament.create(name: "French Tournament", max_player: 3, address: "Amien", date: "27 decembre 2018")
+Tournament.create(name: "March Tournament", max_player: 5, address: " Arlon", date: "25 decembre 2017")
+Tournament.create(name: "April Tournament", max_player: 4, address: " Saint-Quentin en Tourmont", date: "6 may 2019")
+Tournament.create(name: "July Tournament", max_player: 3, address: " Lille", date: "27 decembre 2018")
 
 User.destroy_all
 user = User.new
@@ -60,6 +69,102 @@ user.address = "test5 street n°23 brussels "
 user.first_name = "Kevin"
 user.admin = true
 user.save!
+user = User.new
+user.email = 'test6@example.com'
+user.password = 'password'
+user.password_confirmation = 'password'
+user.address = "test6 street n°23 brussels "
+user.first_name = "Philippe"
+user.admin = true
+user.save!
+user = User.new
+user.email = 'test7@example.com'
+user.password = 'password'
+user.password_confirmation = 'password'
+user.address = "test7 street n°23 brussels "
+user.first_name = "Marin"
+user.admin = true
+user.save!
+user = User.new
+user.email = 'test8@example.com'
+user.password = 'password'
+user.password_confirmation = 'password'
+user.address = "test8 street n°23 brussels "
+user.first_name = "Frans"
+user.admin = true
+user.save!
+user = User.new
+user.email = 'test9@example.com'
+user.password = 'password'
+user.password_confirmation = 'password'
+user.address = "test9 street n°23 brussels "
+user.first_name = "Marie"
+user.admin = true
+user.save!
+user = User.new
+user.email = 'test10@example.com'
+user.password = 'password'
+user.password_confirmation = 'password'
+user.address = "test10 street n°23 brussels "
+user.first_name = "Antoinette"
+user.admin = true
+user.save!
+user = User.new
+user.email = 'test11@example.com'
+user.password = 'password'
+user.password_confirmation = 'password'
+user.address = "test11 street n°23 brussels "
+user.first_name = "Robert"
+user.admin = true
+user.save!
+user = User.new
+user.email = 'test12@example.com'
+user.password = 'password'
+user.password_confirmation = 'password'
+user.address = "test12 street n°23 brussels "
+user.first_name = "Jean"
+user.admin = true
+user.save!
+user = User.new
+user.email = 'test13@example.com'
+user.password = 'password'
+user.password_confirmation = 'password'
+user.address = "test13 street n°23 brussels "
+user.first_name = "Leon"
+user.admin = true
+user.save!
+user = User.new
+user.email = 'test14@example.com'
+user.password = 'password'
+user.password_confirmation = 'password'
+user.address = "test14 street n°23 brussels "
+user.first_name = "Raoul"
+user.admin = true
+user.save!
+user = User.new
+user.email = 'test15@example.com'
+user.password = 'password'
+user.password_confirmation = 'password'
+user.address = "test15 street n°23 brussels "
+user.first_name = "Cassy"
+user.admin = true
+user.save!
+user = User.new
+user.email = 'test16@example.com'
+user.password = 'password'
+user.password_confirmation = 'password'
+user.address = "test16 street n°23 brussels "
+user.first_name = "Amhed"
+user.admin = true
+user.save!
+user = User.new
+user.email = 'test17@example.com'
+user.password = 'password'
+user.password_confirmation = 'password'
+user.address = "test17 street n°23 brussels "
+user.first_name = "John"
+user.admin = true
+user.save!
 
 Game.destroy_all
 Game.create(title: "Call Of Duty", description: "War game, very agressif, blood, -18!" )
@@ -67,6 +172,16 @@ Game.create(title: "League Of Legend", description: "Addictif game, aventure, -7
 Game.create(title: "SIMS III + extra dog", description: "Construction, family, for girl" )
 Game.create(title: "Counter Strike", description: "War game, very agressif, blood, -18!" )
 Game.create(title: "GTA VI", description: "The famous GTA VI, arcade, -18!" )
+Game.create(title: "Call Of Duty II", description: "War game, very agressif, blood, -18!" )
+Game.create(title: "Espion 4", description: "Addictif game, aventure, -7." )
+Game.create(title: "Vicking", description: "Construction, family, for girl" )
+Game.create(title: "Minecraft", description: "War game, very agressif, blood, -18!" )
+Game.create(title: "Fifa 2017", description: "The famous GTA VI, arcade, -18!" )
+Game.create(title: "Last Of Us", description: "War game, very agressif, blood, -18!" )
+Game.create(title: "Fast and Furious", description: "Addictif game, aventure, -7." )
+Game.create(title: "Harry Potter", description: "Construction, family, for girl" )
+Game.create(title: "SIMS 16 + Kitchen", description: "War game, very agressif, blood, -18!" )
+Game.create(title: "Fifa 2016", description: "The famous GTA VI, arcade, -18!" )
 
 
 Matche.destroy_all

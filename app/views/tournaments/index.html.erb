@@ -2,25 +2,25 @@
 <h2 class= "text-center">Tournaments</h2>
 <br><br><br>
 <div class="text-center">
-  <div class="container02">
+  <div class="container">
     <% @tournaments.each do  |tournament| %>
-  <div class="see">
-  <div>
-    <div class="flip">
-      <div class="cardi">
-        <div class="face front">
-         <%= tournament.name %>
+    <div class="see">
+      <div class="col-lg-4">
+        <div class="flip">
+          <div class="cardi">
+            <div class="face front">
+             <%= tournament.name %>
+           </div>
+           <div class="face back">
+             <div class="address"><%= tournament.date %></div>
+           </div>
+         </div>
        </div>
-       <div class="face back">
-         <div class="address"><%= tournament.date %></div>
-       </div>
+       <%= link_to "See", tournament_path(tournament) %>
      </div>
-   </div>
-</div>
-<div>
-   <%= link_to "See", tournament_path(tournament) %>
+     <div>
 
-   </div>
+     </div>
    </div>
    <% end %>
  </div>

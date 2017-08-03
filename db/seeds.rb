@@ -189,16 +189,19 @@ match1 = Matche.new
 match1.score = "1-0"
 match1.game = Game.find_by_title("Call Of Duty")
 match1.users= [User.find_by_email("test5@example.com"), User.find_by_email("test4@example.com") ]
+match1.tournament= Tournament.find_by_name("Junior Tournament")
 match1.save!
 match2 = Matche.new
 match2.score = "2-0"
 match2.game = Game.find_by_title("League Of Legend")
 match2.users= [User.find_by_email("test2@example.com"), User.find_by_email("test3@example.com") ]
+match2.tournament= Tournament.find_by_name("Senior Tournament")
 match2.save!
 match3 = Matche.new
 match3.score = "3-1"
 match3.game = Game.find_by_title("Counter Strike")
 match3.users= [User.find_by_email("test@example.com"), User.find_by_email("test1@example.com") ]
+match3.tournament= Tournament.find_by_name("May Tournament")
 match3.save!
 
 

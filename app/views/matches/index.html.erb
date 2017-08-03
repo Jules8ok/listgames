@@ -2,19 +2,18 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-0.5 ">
-
-
         <div class="text-center">
           <h2>Matches</h2>
           <% @matches.each do  |matche| %>
           <div class="card0">
             <h3> <%= matche.score %> </h3>
             <p><%= matche.users.first.first_name%> - <%= matche.users.second.first_name%></p>
-            <p><%= matche.game.title%></p>
-
+            <p><%= matche.game.title%>    /
+            <% if !matche.tournament.nil?%>
+          <%= matche.tournament.name %></p>
+            <% end %>
           </div>
           <% end %>
-
         </div>
       </div>
     </div>

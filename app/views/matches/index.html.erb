@@ -6,10 +6,20 @@
 
         <div class="text-center">
           <h2>Matches</h2>
-
+          <% @matches.each do  |matche| %>
+          <div class="card0">
+            <h3> <%= matche.score %> </h3>
+            <p><%= matche.users.first.first_name%> - <%= matche.users.second.first_name%></p>
+            <p><%= matche.game.title%></p>
 
           </div>
+          <% end %>
+
         </div>
       </div>
     </div>
   </div>
+</div>
+
+
+

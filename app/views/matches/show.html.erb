@@ -1,4 +1,13 @@
+ <div class="col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-0.5 ">
+
+
+
+<div class="summary_of_one_match">
+
+<h2 class="text-center">Summary of the match between <%= @match.users.first.first_name unless @match.users.empty? %> and <%= @match.users.second.first_name unless @match.users.size < 2 %></h2>
+
 <p>
+  <br><br>
   <b>User 1:</b>
   <%= @match.users.first.first_name unless @match.users.empty? %>
 </p>
@@ -6,5 +15,38 @@
   <b>User 2:</b>
   <%= @match.users.second.first_name unless @match.users.size < 2 %>
 </p>
+  <b>Score:</b>
+   <%if @match.score.nil? %>
+    Not Played yet
+   <% else %>
+   <%= @match.score %>
+   <% end %>
+</p>
+</div>
+
+<br><br><br><br>
+<h3>Other match in this tournament;</h3>
+<% i = 1 %>
+<div class="container09">
+<% @tournament.matche.each do |match| %>
+<div class="cardmatch">
+Match number : <%= i  %>
+<% if match.score.nil? %>
+<br> Score: Not played
+<% else %>
+<br>
+Score : <%= match.score %>
+<% end %>
+<br>
+<%= match.users.first.first_name %> VS <%= match.users.second.first_name %>
+<br><br>
+<% i = i + 1 %>
+</div>
+<% end %>
+</div>
+
+
 
 <%= link_to 'Back', matches_path %>
+
+</div>

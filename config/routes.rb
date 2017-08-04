@@ -9,6 +9,7 @@ Listgames::Application.routes.draw do
   resources :tournaments do
    member do
      get 'sign'
+     get 'play_games'
    end
  end
  resources :games

@@ -10,7 +10,7 @@ Tournament.destroy_all
 Tournament.create(name: "May Tournament", max_player: 5, address: " 22 drève pittoresque 1640 Rhode-Saint genèse Belgique", date: "25 decembre 2017")
 Tournament.create(name: "Junior Tournament", max_player: 4, address: " 124 rue de l'été 1050 Ixelles Belgique", date: "6 may 2019")
 Tournament.create(name: "Senior Tournament", max_player: 3, address: " 13 rue Jules Colle Waterloo", date: "27 decembre 2018")
-Tournament.create(name: "May Tournament", max_player: 5, address: " 22 drève pittoresque 1640 Rhode-Saint genèse Belgique", date: "25 decembre 2017")
+Tournament.create(name: "Sun Tournament", max_player: 5, address: " 22 drève pittoresque 1640 Rhode-Saint genèse Belgique", date: "25 decembre 2017")
 Tournament.create(name: "June Tournament", max_player: 4, address: " 124 rue de l'été 1050 Ixelles Belgique", date: "6 may 2019")
 Tournament.create(name: "Week Tournament", max_player: 3, address: " Ixelles", date: "27 decembre 2018")
 Tournament.create(name: "The Tournament", max_player: 5, address: " Uccle", date: "25 decembre 2017")

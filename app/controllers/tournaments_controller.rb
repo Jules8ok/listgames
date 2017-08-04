@@ -53,11 +53,33 @@ class TournamentsController < ApplicationController
      @match.tournament = @tournament
      @match.save!
    elsif solo_match.users.include? @user
-      redirect_to matches_path
-    else
-      @match = solo_match
-      @match.users << @user
-      @match.save!
+    redirect_to matches_path
+  else
+    @match = solo_match
+    @match.users << @user
+    @match.save!
+  end
+end
+def play_games
+  @tournament = Tournament.find(params[:id])
+  @tournament.matches.each do |k|
+    rand = Random.rand(2)
+    winner = Random.rand(2)
+    score = ""
+    case rand
+    when 0
+      score = "1-0"
+      win_points = 3
+      k.user = k.users[winner]
+    when 1
+      score = "1-1"
+      win_points = 1
+      k.user = nil
     end
+    k.score = score
+    k.win_points = win_points
+    k.save
+  end
+  redirect_to tournament_path(@tournament)
 end
 end

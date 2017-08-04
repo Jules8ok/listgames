@@ -7,6 +7,7 @@ class MatchesController < ApplicationController
   end
 
   def show
+    @tournament = @match.tournament
   end
 
   def new

@@ -1,25 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <style>
-    table {
-      border-collapse: collapse;
-      width: 100%;
-    }
-
-    th, td {
-      padding: 8px;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
-    }
-
-    tr:hover{background-color:#f5f5f5}
-  </style>
-</head>
-<body>
+<% if current_user.matche.first.nil? %>
+<% else current_user.matche.first.tournament == @tournament%>
+<p class="text-center"> <%= current_user.first_name %>, you are already sign in! Go to the match index!</p>
+<% end%>
 
   <h2 class="text-center"><%= @tournament.name %></h2>
   <br>
+
+  <br>  <br>  <br>  <br>  <br>  <br>
 
   <p class="info"> <span class="strong">Address;</span><%= @tournament.address %><br>
     <span class="strong">Max player;</span> <%= @tournament.max_player %> <br> <span class="strong">Date;</span> <%= @tournament.date %></p>
@@ -37,3 +24,9 @@
   \|
 <% end %>
 <%= link_to 'Sign', sign_tournament_path(@tournament) %>
+
+
+
+
+
+

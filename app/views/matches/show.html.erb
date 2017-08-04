@@ -38,7 +38,7 @@ Match number : <%= i  %>
 Score : <%= match.score %>
 <% end %>
 <br>
-<%= match.users.first.first_name %> VS <%= match.users.second.first_name %>
+<%= @match.users.first.first_name %> VS <%= @match.users.second.first_name %>
 <br><br>
 <% i = i + 1 %>
 </div>

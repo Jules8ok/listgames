@@ -1,0 +1,10 @@
+<p>
+  <b>User 1:</b>
+  <%= @match.users.first.first_name unless @match.users.empty? %>
+</p>
+<p>
+  <b>User 2:</b>
+  <%= @match.users.second.first_name unless @match.users.size < 2 %>
+</p>
+
+<%= link_to 'Back', matches_path %>

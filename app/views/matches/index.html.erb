@@ -7,18 +7,23 @@
           <% @matches.each do  |matche| %>
           <div class="card0">
             <h3> <%= matche.score %> </h3>
+            <% if !matche.users.first.nil? && !matche.users.second.nil? %>
             <p><%= matche.users.first.first_name%> - <%= matche.users.second.first_name%></p>
-            <p><%= matche.game.title%>    /
-            <% if !matche.tournament.nil?%>
-          <%= matche.tournament.name %></p>
+            <% end %>
+            <% if !matche.game.nil?%>
+            <p><%= matche.game.title%>
+              <% end %>    /
+              <% if !matche.tournament.nil?%>
+              <%= matche.tournament.name %></p>
+              <% end %>
+              <%= link_to "See", match_path(matche) %>
+            </div>
             <% end %>
           </div>
-          <% end %>
         </div>
       </div>
     </div>
   </div>
-</div>
 
 
 

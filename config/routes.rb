@@ -6,9 +6,13 @@ Listgames::Application.routes.draw do
   get "pages/contact"
 
   resources :matches, only:[:index, :show, :edit, :destroy, :update]
-  resources :tournaments
-  resources :games
-    resources :users
+  resources :tournaments do
+   member do
+     get 'sign'
+   end
+ end
+ resources :games
+ resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

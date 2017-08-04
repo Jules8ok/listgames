@@ -7,18 +7,15 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
     user ||= User.new # guest user (not logged in)
-    if user.is_admin?
+    if user.admin?
       can :manage, :all
-      cannot :close, Tournament, close: true
-      cannot :sign, Tournament, close: true
-      cannot :sign_valid, Tournament, close: true
-      cannot :play_games, Tournament, close:false
 
-    elsif !user.pseudo.nil?
+
+    elsif !user.first_name.nil?
       can :read, :all
       can :sign, Tournament, close: false
       can :sign_valid, Tournament, close: false
-      can :stats, Player
+      can :stats, User
     else
       can :read, :all
     end

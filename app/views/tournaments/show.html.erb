@@ -32,4 +32,8 @@
   <%= link_to "Back to tournaments", tournaments_path %>
 <br>
 
-
+<% if can? :update, @tournament %>
+  <%= link_to 'Edit', edit_tournament_path(@tournament) %>
+  \|
+<% end %>
+<%= link_to 'Sign', sign_tournament_path(@tournament) %>

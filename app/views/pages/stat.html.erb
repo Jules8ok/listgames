@@ -2,16 +2,28 @@
 
 <h2 class="text-center">Stats</h2>
 <% User.all.each do |user| %>
-<% user.matche %>
-<%= user.first_name %>
+<%= user.first_name %> <br><br>
 <% i = 0 %>
 <% user.matche.each do |match| %>
-<%= match.score %>
+<% match.score %>
 <% i += 1 %>
 <% end %>
- <p>Number of match played : <%= i %></p>
+<p>Match played : <%= a = user.matche.where("score is not null").count %></p>
+<p>Match won : <%= b = user.matche.where("matches.user_id = ?", user.id).count %></p>
+<p>Match lost : <%= c =user.matche.where("score is not null and matches.user_id != ?", user.id).count %></p>
+<p>Match nul : <%= a - b - c %></p>
 <br>
 <% end %>
 <% else %>
 <h2 class="text-center">You have to sign in or log in </h2>
 <% end %>
+
+
+
+
+
+
+
+
+
+

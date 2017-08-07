@@ -12,8 +12,7 @@ class User < ActiveRecord::Base
   has_many :tournaments, through: :subscriptions
   has_many :user_matche_joins, :dependent => :delete_all
   has_many :matche, through: :user_matche_joins
-  scope :win, where(:win_points => 3)
-  scope :draw, where(:win_points => 1)
+
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -25,5 +24,20 @@ class User < ActiveRecord::Base
     # uncomment the line below to skip the confirmation emails.
     # user.skip_confirmation!
   end
+end
+def points
+  nb_win*3 + nb_draw
+end
+def nb_win
+  self.matche.where("matches.user_id = ?", self.id).count
+end
+def nb_loose
+  self.matche.where("score is not null and matches.user_id != ?", self.id).count
+end
+def nb_draw
+  nb_played - nb_win - nb_loose
+end
+def nb_played
+  self.matche.where("score is not null").count
 end
 end

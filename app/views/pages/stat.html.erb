@@ -5,54 +5,54 @@
 <div class="container642">
   <div class="ranking">
     <h4 class="text-center">Ranking</h4> <br>
-    <% User.all.each do |user| %>
-    <% b = user.matche.where("matches.user_id = ?", user.id).count %>
-    <% @c = User.all.sort_by {|user| user.matche.where("matches.user_id = ?", user.id).count}.reverse! %>
-    <% end %>
-    <% i = 0 %>
-    <% @c.each do |member| %>
+    <% i = 1 %>
+    <% User.all.sort_by{|k| k.points}.reverse.each do |user| %>
+    <div class="ranking01">
+    <div><%= i %> . <%= user.first_name %></div>
+      <div> <%= user.points %> pts</div>
+    </div>
     <% i += 1 %>
-    <div class="ranking01"> <p> <%= i %>. <%= member.first_name %> </p>  <p>  <%= member.matche.where("matches.user_id = ?", member.id).count*3 %>pts</p></div>
-    <br>
     <% end %>
-
   </div>
   <div class="my_info">
     <h4 class="text-center">My Stats</h4>
-    <p >
+    <p>
       <%= current_user.first_name %> <br><br>
-      <%= current_user.matche.where("matches.user_id = ?", current_user.id).count %> victories <br>
-      <%= current_user.matche.where("score is not null").count %> matchs played <br>
-      <%= current_user.matche.where("score is not null and matches.user_id != ?", current_user.id).count %> matchs lost <br>
-      <%= current_user.matche.where("matches.user_id = ?", current_user.id).count*3 %> pts <br>
-
-
-    </p>
-  </div>
-</div>
-<div class="text-center">
-  <h4 class="text-center">All user infos</h4>
-  <div class="container5">
-    <% User.all.each do |user| %>
-    <div class="card">
-      <%= user.first_name %> <br><br>
-      <% i = 0 %>
-      <% user.matche.each do |match| %>
-      <% match.score %>
-      <% i += 1 %>
-      <% end %>
-      <p>Match played : <%= a = user.matche.where("score is not null").count %></p>
-      <p>Match won : <%= b = user.matche.where("matches.user_id = ?", user.id).count %></p>
-      <p>Match lost : <%= c =user.matche.where("score is not null and matches.user_id != ?", user.id).count %></p>
-      <p>Match nul : <%= a - b - c %></p>
-      <br>
-      <% end %>
+      <%= current_user.nb_win %> victories <br>
+      <%= current_user.nb_played %> matchs played <br>
+      <%= current_user.nb_loose %> matchs lost <br>
+      <p> <%= current_user.nb_draw %> matchs null</p> <br>
+      <p class="text-center"><strong>Total points:
+        <%= current_user.points%> pts</strong></p> <br>
+      </p>
     </div>
   </div>
-</div>
-<% else %>
-<h2 class="text-center">You have to sign in or log in </h2>
-<% end %>
+  <div class="text-center">
+    <h4 class="text-center">All users infos</h4>
+    <div class="container5">
+
+      <% User.all.each do |user| %>
+      <div class="card">
+        <%= user.first_name %> <br><br>
+        <% i = 0 %>
+        <% user.matche.each do |match| %>
+        <% match.score %>
+        <% i += 1 %>
+        <% end %>
+        <p>Match played : <%= a = user.matche.where("score is not null").count %></p>
+        <p>Match won : <%= b = user.matche.where("matches.user_id = ?", user.id).count %></p>
+        <p>Match lost : <%= c =user.matche.where("score is not null and matches.user_id != ?", user.id).count %></p>
+        <p>Match nul : <%= a - b - c %></p>
+        <br>
+        </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+  <% else %>
+  <h2 class="text-center">You have to sign in or log in </h2>
+  <% end %>
 
 
 

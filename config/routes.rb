@@ -4,6 +4,7 @@ Listgames::Application.routes.draw do
   root to: 'pages#home'
   get "pages/home"
   get "pages/contact"
+   get "pages/stat"
 
   resources :matches, only:[:index, :show, :edit, :destroy, :update]
   resources :tournaments do

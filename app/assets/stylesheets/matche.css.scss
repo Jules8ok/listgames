@@ -9,7 +9,7 @@
 
 
 .cardmatch{
-background-color: #efefef;
+  background-color: #efefef;
   padding-top: 20px;
   padding-bottom: 20px;
   padding-left: 20px;
@@ -23,3 +23,11 @@ background-color: #efefef;
     cursor: pointer;
   }
 }
+
+.container6 {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+

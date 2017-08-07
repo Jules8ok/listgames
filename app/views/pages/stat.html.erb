@@ -1,0 +1,17 @@
+<% if user_signed_in? %>
+
+<h2 class="text-center">Stats</h2>
+<% User.all.each do |user| %>
+<% user.matche %>
+<%= user.first_name %>
+<% i = 0 %>
+<% user.matche.each do |match| %>
+<%= match.score %>
+<% i += 1 %>
+<% end %>
+ <p>Number of match played : <%= i %></p>
+<br>
+<% end %>
+<% else %>
+<h2 class="text-center">You have to sign in or log in </h2>
+<% end %>

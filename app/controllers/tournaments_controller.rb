@@ -62,7 +62,7 @@ class TournamentsController < ApplicationController
 end
 def play_games
   @tournament = Tournament.find(params[:id])
-  @tournament.matches.each do |k|
+  @tournament.matche.each do |k|
     rand = Random.rand(2)
     winner = Random.rand(2)
     score = ""
@@ -77,7 +77,6 @@ def play_games
       k.user = nil
     end
     k.score = score
-    k.win_points = win_points
     k.save
   end
   redirect_to tournament_path(@tournament)

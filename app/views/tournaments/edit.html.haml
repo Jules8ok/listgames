@@ -5,4 +5,16 @@
   = f.text_field :address
   = f.label :name, "How many players?"
   = f.number_field :max_player
-  = f.submit
+  - @games = Game.all
+  %br
+  %br
+  - @games.each do |game|
+    = f.label :games, game.title
+    = check_box_tag "games[]", game.id
+    %br
+
+  = f.label :name, "Another game?"
+
+  %br
+  .text-center
+    = f.submit

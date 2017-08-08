@@ -5,52 +5,99 @@
   %p.text-center
     = current_user.first_name
     , you are already sign in! Go to the match index!
-%br/
-%br/
-%br/
-%br/
-%br/
-%br/
-.info_container.text-center
-  %p.info
-    %span.strong Address;
-    = @tournament.address
+.yolo
+  .my_info.text-center
+    %h4.text-center My Stats
+    %p
+      = current_user.first_name
+      %br/
+      %br/
+      = current_user.nb_win
+      victories
+      %br/
+      = current_user.nb_played
+      matchs played
+      %br/
+      = current_user.nb_loose
+      matchs lost
+      %br/
+    %p
+      = current_user.nb_draw
+      matchs null
     %br/
-    %span.strong Max player;
-    = @tournament.max_player
+    %p.text-center
+      %strong
+        Total points:
+        \#{current_user.points} pts
     %br/
-    %span.strong Date;
-    = @tournament.date
-  = link_to "Delete", tournament_path(@tournament), method: :delete, data: { |
-    confirm: "Are you sure?" }                                               |
-  %br/
-  = link_to "Back to tournaments", tournaments_path
-  %br/
-.text-center
-  - if can? :update, @tournament
-    = link_to 'Edit', edit_tournament_path(@tournament)
-    |
-  = link_to 'Sign', sign_tournament_path(@tournament)
-  %br/
-  %br/
-  .btn.btn-primary.bouton_position#play_btn1 Sign in
-  %br
-  %br
-  =image_tag "ajax-loader1.gif",id: "load", style: "display:none"
-  - if can? :update, @tournament
 
-    .btn.btn-success.bouton_position#play_btn play tournament
-    %br
-    %br
-    =image_tag "ajax-loader.gif",id: "load", style: "display:none"
-%div.text-center.milieu#result{style: "display:none"}
-  Tournement was played!
-  %br
-  %br
-%div.text-center.milieu#result1{style: "display:none"}
-  You are sign in, good luck! ;)
-%div.text-center.milieu#error1{style: "display:none"}
-  You are already sign in, good luck! ;)
+  .my_info.text-center
+    %p.info
+      %span.strong Address;
+      = @tournament.address
+      %br/
+      %span.strong Max player;
+      = @tournament.max_player
+      %br/
+      %span.strong Games;
+      = @tournament.games.inject(""){|x,y| x + y.title + ", "}[0..-3]
+      %br/
+      %span.strong Date;
+      = @tournament.date
+
+      .text-center
+        - if can? :update, @tournament
+          = link_to 'Edit', edit_tournament_path(@tournament)
+          = link_to "Delete", tournament_path(@tournament), method: :delete, data: { |
+          confirm: "Are you sure?" }                                               |
+
+        %br/
+        %br/
+        .btn.btn-primary.bouton_position#play_btn1 Sign in
+        %br
+        %br
+        =image_tag "ajax-loader1.gif",id: "load", style: "display:none"
+        - if can? :update, @tournament
+
+          .btn.btn-success.bouton_position#play_btn play tournament
+          %br
+          %br
+          =image_tag "ajax-loader.gif",id: "load", style: "display:none"
+      %div.text-center.milieu#result{style: "display:none"}
+        Tournement was played!
+        %br
+        %br
+      %div.text-center.milieu#result1{style: "display:none"}
+        You are sign in, good luck! ;)
+      %div.text-center.milieu#error1{style: "display:none"}
+        You are already sign in, good luck! ;)
+      %br/
+      = link_to "Back to tournaments", tournaments_path
+
+%h3 All matches in this tournament;
+- i = 1
+.container09
+  - @tournament.matche.each do |match|
+    .cardmatch
+      Match number : #{i}
+      - if match.score.nil?
+        %br/
+        Score: Not played
+      - else
+        %br/
+        Score : #{match.score}
+      %br/
+      = match.users.first.first_name
+      VS
+      - if match.users.second.nil?
+      - else
+        = match.users.second.first_name
+      %br/
+      %br/
+      - i = i + 1
+
+
+
 
 
 :javascript

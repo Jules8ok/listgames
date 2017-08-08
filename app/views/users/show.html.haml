@@ -3,6 +3,24 @@
     %h3
       = @user.first_name
     %p= @user.email
+    - i = 0
+    - @user.matche.each do |match|
+      - match.score
+      - i += 1
+    %p
+      Match played : #{a = @user.matche.where("score is not null").count}
+    %p
+      Match won : #{b = @user.matche.where("matches.user_id = ?", @user.id).count}
+    %p
+      Match lost : #{c =@user.matche.where("score is not null and matches.user_id != ?", @user.id).count}
+    %p
+      Match nul : #{v = a - b - c}
+    %p
+    Points : #{b*3 + v}
+  %br/
   %br/
   %br/
 = link_to "Back to users", users_path
+
+
+

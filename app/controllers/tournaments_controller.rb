@@ -33,7 +33,8 @@ class TournamentsController < ApplicationController
 
   def update
     @tournament = Tournament.find(params[:id])
-    @tournament.update(params[:tournament])
+    @tournament.update_attributes(params[:tournament])
+    @tournament.games = Game.where("id in (?)", params[:games])
     redirect_to tournaments_path
   end
 

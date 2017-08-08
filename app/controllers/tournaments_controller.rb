@@ -44,6 +44,7 @@ class TournamentsController < ApplicationController
     redirect_to tournaments_path
   end
   def sign
+   @already_sign = false
    @user = current_user
    @tournament = Tournament.find(params[:id])
    solo_match = @tournament.matche.select { |p| p.users.size == 1 }.first
@@ -54,26 +55,28 @@ class TournamentsController < ApplicationController
      @match.tournament = @tournament
      @match.save!
    elsif solo_match.users.include? @user
-    render json: {rep: "alreadySign"} and return
+    @already_sign = true
   else
     @match = solo_match
     @match.users << @user
     @match.save!
   end
-  render json: {rep: "ok"}
+  respond_to do |format|
+    format.js
+  end
 end
 def play_games
   @tournament = Tournament.find(params[:id])
   @tournament.matche.each do |k|
-    rand = Random.rand(2)
+    rand = Random.rand(4)
     winner = Random.rand(2)
     score = ""
     case rand
-    when 0
+    when 0, 1, 2
       score = "1-0"
       win_points = 3
       k.user = k.users[winner]
-    when 1
+    when 3
       score = "1-1"
       win_points = 1
       k.user = nil
@@ -81,6 +84,9 @@ def play_games
     k.score = score
     k.save
   end
-  render json: {rep: "ok"}
+  respond_to do |format|
+    format.js
+  end
+
 end
 end

@@ -1,0 +1,8 @@
+$("#stat1").html("<%= j render 'stat1', tournament: @tournament %>");
+$("#stat2").html("<%= j render 'stat2' %>");
+<% if (!@already_sign)%>
+  $("#result1").fadeIn();
+<%else%>
+  $("#error1").fadeIn();
+<%end%>
+$("#load1").fadeOut();

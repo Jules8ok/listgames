@@ -165,6 +165,14 @@ user.address = "test17 street n°23 brussels "
 user.first_name = "John"
 user.admin = true
 user.save!
+user = User.new
+user.email = 'test18@example.com'
+user.password = 'password'
+user.password_confirmation = 'password'
+user.address = "Angoulême "
+user.first_name = "Charly"
+user.admin = true
+user.save!
 
 Game.destroy_all
 Game.create(title: "Call Of Duty", description: "War game, very agressif, blood, -18!" )

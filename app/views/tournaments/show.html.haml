@@ -6,30 +6,8 @@
     = current_user.first_name
     , you are already sign in! Go to the match index!
 .yolo
-  .my_info.text-center
-    %h4.text-center My Stats
-    %p
-      = current_user.first_name
-      %br/
-      %br/
-      = current_user.nb_win
-      victories
-      %br/
-      = current_user.nb_played
-      matchs played
-      %br/
-      = current_user.nb_loose
-      matchs lost
-      %br/
-    %p
-      = current_user.nb_draw
-      matchs null
-    %br/
-    %p.text-center
-      %strong
-        Total points:
-        \#{current_user.points} pts
-    %br/
+  .my_info.text-center#stat2
+    =render "stat2"
 
   .my_info.text-center
     %p.info
@@ -53,13 +31,13 @@
 
         %br/
         %br/
-        .btn.btn-primary.bouton_position#play_btn1 Sign in
+        =link_to "Sign in", sign_tournament_path, remote: true, class: "btn btn-primary bouton_position"
         %br
         %br
         =image_tag "ajax-loader1.gif",id: "load", style: "display:none"
         - if can? :update, @tournament
 
-          .btn.btn-success.bouton_position#play_btn play tournament
+          =link_to "Play tournament", play_games_tournament_path, remote: true, class: "btn btn-success bouton_position"
           %br
           %br
           =image_tag "ajax-loader.gif",id: "load", style: "display:none"
@@ -73,67 +51,10 @@
         You are already sign in, good luck! ;)
       %br/
       = link_to "Back to tournaments", tournaments_path
-
-%h3 All matches in this tournament;
-- i = 1
-.container09
-  - @tournament.matche.each do |match|
-    .cardmatch
-      Match number : #{i}
-      - if match.score.nil?
-        %br/
-        Score: Not played
-      - else
-        %br/
-        Score : #{match.score}
-      %br/
-      = match.users.first.first_name
-      VS
-      - if match.users.second.nil?
-      - else
-        = match.users.second.first_name
-      %br/
-      %br/
-      - i = i + 1
+#stat1
+  =render "stat1", tournament: @tournament
 
 
-
-
-
-:javascript
-  function playGamesAjax(){
-    $.ajax({
-    type: "GET",
-    url: "#{play_games_tournament_path}",
-    success: function(data) {
-      $("#result").fadeIn();
-      $("#load").fadeOut();
-      }
-    });
-  }
-  $("#play_btn").click(function(){
-    $("#load").fadeIn();
-    playGamesAjax();
-  });
-
-  function signInAjax(){
-    $.ajax({
-    type: "GET",
-    url: "#{sign_tournament_path}",
-    success: function(data) {
-      if (data.rep == "ok"){
-        $("#result1").fadeIn();
-        $("#load1").fadeOut();
-      }else{
-        $("#error1").fadeIn();
-      }
-    }
-    });
-  }
-  $("#play_btn1").click(function(){
-    $("#load1").fadeIn();
-    signInAjax();
-  });
 
 
 

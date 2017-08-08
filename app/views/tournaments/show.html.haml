@@ -1,0 +1,96 @@
+%h2.text-center= @tournament.name
+%br/
+- if current_user.matche.first.nil?
+- else current_user.matche.first.tournament == @tournament
+  %p.text-center
+    = current_user.first_name
+    , you are already sign in! Go to the match index!
+%br/
+%br/
+%br/
+%br/
+%br/
+%br/
+.info_container.text-center
+  %p.info
+    %span.strong Address;
+    = @tournament.address
+    %br/
+    %span.strong Max player;
+    = @tournament.max_player
+    %br/
+    %span.strong Date;
+    = @tournament.date
+  = link_to "Delete", tournament_path(@tournament), method: :delete, data: { |
+    confirm: "Are you sure?" }                                               |
+  %br/
+  = link_to "Back to tournaments", tournaments_path
+  %br/
+.text-center
+  - if can? :update, @tournament
+    = link_to 'Edit', edit_tournament_path(@tournament)
+    |
+  = link_to 'Sign', sign_tournament_path(@tournament)
+  %br/
+  %br/
+  .btn.btn-primary.bouton_position#play_btn1 Sign in
+  %br
+  %br
+  =image_tag "ajax-loader1.gif",id: "load", style: "display:none"
+  - if can? :update, @tournament
+
+    .btn.btn-success.bouton_position#play_btn play tournament
+    %br
+    %br
+    =image_tag "ajax-loader.gif",id: "load", style: "display:none"
+%div.text-center.milieu#result{style: "display:none"}
+  Tournement was played!
+  %br
+  %br
+%div.text-center.milieu#result1{style: "display:none"}
+  You are sign in, good luck! ;)
+%div.text-center.milieu#error1{style: "display:none"}
+  You are already sign in, good luck! ;)
+
+
+:javascript
+  function playGamesAjax(){
+    $.ajax({
+    type: "GET",
+    url: "#{play_games_tournament_path}",
+    success: function(data) {
+      $("#result").fadeIn();
+      $("#load").fadeOut();
+      }
+    });
+  }
+  $("#play_btn").click(function(){
+    $("#load").fadeIn();
+    playGamesAjax();
+  });
+
+  function signInAjax(){
+    $.ajax({
+    type: "GET",
+    url: "#{sign_tournament_path}",
+    success: function(data) {
+      if (data.rep == "ok"){
+        $("#result1").fadeIn();
+        $("#load1").fadeOut();
+      }else{
+        $("#error1").fadeIn();
+      }
+    }
+    });
+  }
+  $("#play_btn1").click(function(){
+    $("#load1").fadeIn();
+    signInAjax();
+  });
+
+
+
+
+
+
+

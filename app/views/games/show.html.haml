@@ -1,0 +1,4 @@
+%h2= @game.title
+= cl_image_tag @game.photo, height: 300, width: 400, crop: :fill
+%br/
+= link_to "Back to games", games_path

@@ -53,12 +53,13 @@ class TournamentsController < ApplicationController
      @match.tournament = @tournament
      @match.save!
    elsif solo_match.users.include? @user
-    redirect_to matches_path
+    render json: {rep: "alreadySign"} and return
   else
     @match = solo_match
     @match.users << @user
     @match.save!
   end
+  render json: {rep: "ok"}
 end
 def play_games
   @tournament = Tournament.find(params[:id])
@@ -79,6 +80,6 @@ def play_games
     k.score = score
     k.save
   end
-  redirect_to tournament_path(@tournament)
+  render json: {rep: "ok"}
 end
 end

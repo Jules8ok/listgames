@@ -30,6 +30,7 @@ gem "geocoder"
 gem "gmaps4rails"
 gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
+gem 'haml-rails'
 
 
 source 'https://rails-assets.org' do

@@ -1,0 +1,65 @@
+- if user_signed_in?
+  %h2.text-center Stats
+  %br/
+  %br/
+  .container642
+    .ranking
+      %h4.text-center Ranking
+      %br/
+      - i = 1
+      - User.all.sort_by{|k| k.points}.reverse.each do |user|
+        .ranking01
+          %div
+            = i
+            \. #{user.first_name}
+          %div
+            = user.points
+            pts
+        - i += 1
+    .my_info
+      %h4.text-center My Stats
+      %p
+        = current_user.first_name
+        %br/
+        %br/
+        = current_user.nb_win
+        victories
+        %br/
+        = current_user.nb_played
+        matchs played
+        %br/
+        = current_user.nb_loose
+        matchs lost
+        %br/
+      %p
+        = current_user.nb_draw
+        matchs null
+      %br/
+      %p.text-center
+        %strong
+          Total points:
+          \#{current_user.points} pts
+      %br/
+  .text-center
+    %h4.text-center All users infos
+    .container5
+      - User.all.each do |user|
+        .card
+          = user.first_name
+          %br/
+          %br/
+          - i = 0
+          - user.matche.each do |match|
+            - match.score
+            - i += 1
+          %p
+            Match played : #{a = user.matche.where("score is not null").count}
+          %p
+            Match won : #{b = user.matche.where("matches.user_id = ?", user.id).count}
+          %p
+            Match lost : #{c =user.matche.where("score is not null and matches.user_id != ?", user.id).count}
+          %p
+            Match nul : #{a - b - c}
+          %br/
+- else
+  %h2.text-center You have to sign in or log in

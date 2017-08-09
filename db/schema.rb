@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170802132623) do
+ActiveRecord::Schema.define(:version => 20170809091253) do
 
   create_table "game_tournement_joins", :force => true do |t|
     t.integer  "game_id"
@@ -87,6 +87,12 @@ ActiveRecord::Schema.define(:version => 20170802132623) do
     t.string   "last_name"
     t.string   "token"
     t.datetime "token_expiry"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

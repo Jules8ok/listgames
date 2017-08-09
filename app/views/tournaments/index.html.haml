@@ -12,7 +12,12 @@
               .face.front
                 = tournament.name
               .face.back
-                .address= tournament.date
+                - if current_user.address.nil?
+                - else
+                  .distance.row2= current_user.distance_from([tournament.latitude, tournament.longitude]).round(2)
+                  .distance.row2= "km the :"
+
+                .address.row1= tournament.date
           = link_to "See", tournament_path(tournament)
         %div
   %br/

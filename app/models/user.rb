@@ -1,8 +1,10 @@
 class User < ActiveRecord::Base
+  validates :first_name, presence: true
+  after_create :send_welcome_email
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # , :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-  :recoverable, :rememberable, :trackable, :validatable
+  :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   devise :omniauthable, omniauth_providers: [:facebook]
   # Setup accessible (or protected) attributes for your model
@@ -12,6 +14,12 @@ class User < ActiveRecord::Base
   has_many :tournaments, through: :subscriptions
   has_many :user_matche_joins, :dependent => :delete_all
   has_many :matche, through: :user_matche_joins
+
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+  reverse_geocoded_by :latitude, :longitude
+  after_validation :reverse_geocode
+
 
 
   def self.from_omniauth(auth)
@@ -39,5 +47,11 @@ def nb_draw
 end
 def nb_played
   self.matche.where("score is not null").count
+end
+
+private
+
+def send_welcome_email
+  UserMailer.welcome(self).deliver
 end
 end

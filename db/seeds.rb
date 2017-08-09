@@ -25,145 +25,163 @@ user = User.new
 user.email = 'test@example.com'
 user.password = 'password'
 user.password_confirmation = 'password'
-user.address = "test street n°23 brussels "
+user.address = "new-york "
 user.first_name = "Pierre"
 user.admin = true
+user.skip_confirmation!
 user.save!
 user = User.new
 user.email = 'test1@example.com'
 user.password = 'password'
 user.password_confirmation = 'password'
-user.address = "test1 street n°23 brussels "
+user.address = "paris "
 user.first_name = "George"
 user.admin = true
+user.skip_confirmation!
 user.save!
 user = User.new
 user.email = 'test2@example.com'
 user.password = 'password'
 user.password_confirmation = 'password'
-user.address = "test2 street n°23 brussels "
+user.address = "paris "
 user.first_name = "Ernest"
 user.admin = true
+user.skip_confirmation!
 user.save!
 user = User.new
 user.email = 'test3@example.com'
 user.password = 'password'
 user.password_confirmation = 'password'
-user.address = "test3 street n°23 brussels "
+user.address = "champs elisé "
 user.first_name = "Alban"
 user.admin = true
+user.skip_confirmation!
 user.save!
 user = User.new
 user.email = 'test4@example.com'
 user.password = 'password'
 user.password_confirmation = 'password'
-user.address = "test4 street n°23 brussels "
+user.address = "paris "
 user.first_name = "Antoine"
 user.admin = true
+user.skip_confirmation!
 user.save!
 user = User.new
 user.email = 'test5@example.com'
 user.password = 'password'
 user.password_confirmation = 'password'
-user.address = "test5 street n°23 brussels "
+user.address = "brussels "
 user.first_name = "Kevin"
 user.admin = true
+user.skip_confirmation!
 user.save!
 user = User.new
 user.email = 'test6@example.com'
 user.password = 'password'
 user.password_confirmation = 'password'
-user.address = "test6 street n°23 brussels "
+user.address = "brussels "
 user.first_name = "Philippe"
 user.admin = true
+user.skip_confirmation!
 user.save!
 user = User.new
 user.email = 'test7@example.com'
 user.password = 'password'
 user.password_confirmation = 'password'
-user.address = "test7 street n°23 brussels "
+user.address = "brussels "
 user.first_name = "Marin"
 user.admin = true
+user.skip_confirmation!
 user.save!
 user = User.new
 user.email = 'test8@example.com'
 user.password = 'password'
 user.password_confirmation = 'password'
-user.address = "test8 street n°23 brussels "
+user.address = "brussels "
 user.first_name = "Frans"
 user.admin = true
+user.skip_confirmation!
 user.save!
 user = User.new
 user.email = 'test9@example.com'
 user.password = 'password'
 user.password_confirmation = 'password'
-user.address = "test9 street n°23 brussels "
+user.address = "brussels "
 user.first_name = "Marie"
 user.admin = true
+user.skip_confirmation!
 user.save!
 user = User.new
 user.email = 'test10@example.com'
 user.password = 'password'
 user.password_confirmation = 'password'
-user.address = "test10 street n°23 brussels "
+user.address = "ixelles"
 user.first_name = "Antoinette"
 user.admin = true
+user.skip_confirmation!
 user.save!
 user = User.new
 user.email = 'test11@example.com'
 user.password = 'password'
 user.password_confirmation = 'password'
-user.address = "test11 street n°23 brussels "
+user.address = "uccle "
 user.first_name = "Robert"
 user.admin = true
+user.skip_confirmation!
 user.save!
 user = User.new
 user.email = 'test12@example.com'
 user.password = 'password'
 user.password_confirmation = 'password'
-user.address = "test12 street n°23 brussels "
+user.address = "foret bruxelles "
 user.first_name = "Jean"
 user.admin = true
+user.skip_confirmation!
 user.save!
 user = User.new
 user.email = 'test13@example.com'
 user.password = 'password'
 user.password_confirmation = 'password'
-user.address = "test13 street n°23 brussels "
+user.address = "bois de la cambre "
 user.first_name = "Leon"
 user.admin = true
+user.skip_confirmation!
 user.save!
 user = User.new
 user.email = 'test14@example.com'
 user.password = 'password'
 user.password_confirmation = 'password'
-user.address = "test14 street n°23 brussels "
+user.address = "avenue d'hougoumont "
 user.first_name = "Raoul"
 user.admin = true
+user.skip_confirmation!
 user.save!
 user = User.new
 user.email = 'test15@example.com'
 user.password = 'password'
 user.password_confirmation = 'password'
-user.address = "test15 street n°23 brussels "
+user.address = "ixelles "
 user.first_name = "Cassy"
 user.admin = true
+user.skip_confirmation!
 user.save!
 user = User.new
 user.email = 'test16@example.com'
 user.password = 'password'
 user.password_confirmation = 'password'
-user.address = "test16 street n°23 brussels "
+user.address = "brussels "
 user.first_name = "Amhed"
 user.admin = true
+user.skip_confirmation!
 user.save!
 user = User.new
 user.email = 'test17@example.com'
 user.password = 'password'
 user.password_confirmation = 'password'
-user.address = "test17 street n°23 brussels "
+user.address = "Arlon"
 user.first_name = "John"
 user.admin = true
+user.skip_confirmation!
 user.save!
 user = User.new
 user.email = 'test18@example.com'
@@ -172,6 +190,7 @@ user.password_confirmation = 'password'
 user.address = "Angoulême "
 user.first_name = "Charly"
 user.admin = true
+user.skip_confirmation!
 user.save!
 
 Game.destroy_all

@@ -4,10 +4,10 @@
 
 .flip {
   -webkit-perspective: 800;
-   width: 300px;
-   height: 150px;
-    position: relative;
-    margin: 50px auto;
+  width: 300px;
+  height: 150px;
+  position: relative;
+  margin: 50px auto;
 }
 .flip .cardi.flipped {
   -webkit-transform: rotatex(-180deg);
@@ -24,28 +24,28 @@
   position: absolute;
   -webkit-backface-visibility: hidden ;
   z-index: 2;
-    font-family: Georgia;
-    font-size: 2em;
-    text-align: center;
-    line-height: 200px;
-      display: flex;
+  font-family: Georgia;
+  font-size: 2em;
+  text-align: center;
+  line-height: 200px;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 .flip .cardi .front {
   position: absolute;
   z-index: 1;
-    background: #efefef;
-    color: black;
-    cursor: pointer;
-    box-shadow: 0 1px 2px #999;
+  background: #efefef;
+  color: black;
+  cursor: pointer;
+  box-shadow: 0 1px 2px #999;
 }
 .flip .cardi .back {
   -webkit-transform: rotatex(-180deg);
-    background: blue;
-    background: white;
-    color: black;
-    cursor: pointer;
+  background: blue;
+  background: white;
+  color: black;
+  cursor: pointer;
 }
 .address {
   font-size: 16px;
@@ -217,7 +217,7 @@
 }
 
 .container02 {
-    display: flex;
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -247,8 +247,13 @@
 
 }
 
+.row1 {
 
+}
 
+.row2 {
+  font-size: 16px;
+}
 
 
 

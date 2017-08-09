@@ -89,4 +89,29 @@ def play_games
   end
 
 end
+
+def close
+    @tournament = Tournament.find(params[:id])
+    @tournament.games.each do |v|
+      matches = v.matche.where(:tournament_id => @tournament.id)
+      users = matches.inject([]){|m, n| m + n.users}
+      users_match_list = matches.map{|m| m.users}
+      remaining_match = users.combination(2)
+        .select{|p| !(users_match_list.include? p)}
+      remaining_match.each do |m|
+        new_match = Match.new
+        new_match.tournament = @tournament
+        new_match.users = m
+        new_match.game = v
+        new_match.save
+      end
+      matches.each{|m| m.destroy if m.users.size < 2}
+    end
+    @tournament.close = true
+    @tournament.save
+    flash.notice = "Tournament successfully closed!"
+    respond_to do |format|
+      format.js
+    end
+  end
 end

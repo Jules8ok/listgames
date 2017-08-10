@@ -30,11 +30,13 @@
           confirm: "Are you sure?" }   |
 
           - if @tournament.close?
+          - else
             = link_to 'Close', close_tournament_path(@tournament)
+            %br/
+            %br/
+            =link_to "Sign in", sign_tournament_path, remote: true, class: "btn btn-primary bouton_position"
         %br/
-        %br/
-        =link_to "Sign in", sign_tournament_path, remote: true, class: "btn btn-primary bouton_position"
-        %br
+
         %br
         =image_tag "ajax-loader1.gif",id: "load", style: "display:none"
         - if can? :update, @tournament

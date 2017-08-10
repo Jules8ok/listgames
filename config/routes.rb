@@ -11,6 +11,7 @@ Listgames::Application.routes.draw do
    member do
      get 'sign'
      get 'play_games'
+     get 'close'
    end
  end
  resources :games

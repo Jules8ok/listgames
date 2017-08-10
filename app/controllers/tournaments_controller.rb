@@ -108,10 +108,7 @@ def close
       matches.each{|m| m.destroy if m.users.size < 2}
     end
     @tournament.close = true
-    @tournament.save
-    flash.notice = "Tournament successfully closed!"
-    respond_to do |format|
-      format.js
-    end
+    @tournament.save!
+    redirect_to tournament_path
   end
 end

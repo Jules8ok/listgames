@@ -1,24 +1,58 @@
 
 %h4.text-center My Stats
+%br/
+%h5
+  = "-"
+  \#{@tournament.name}
+  = "-"
+%p
+  \#{a = @tournament.matche.where("matches.user_id = ?", current_user.id).count}
+  Victories
+  %br/
+  \#{b = current_user.matche.where("score is not null and matches.user_id != ? and matches.tournament_id = ?", current_user.id, @tournament.id).count}
+  Matches lost
+  %br/
+  \#{c = current_user.matche.where("matches.tournament_id = ?", @tournament.id).count}
+  Matches played
+  %br/
+  \#{ d = c - b - a}
+  Matches null
+  %br/
+%p.text-center
+  %strong
+    Total points:
+    \#{ y = a*3 + d }
+    Pts
+%br/
+%h5 - All Tournament -
 %p
   = current_user.first_name
-  %br/
+
   %br/
   = current_user.nb_win
   victories
   %br/
   = current_user.nb_played
-  matchs played
+  matches played
   %br/
   = current_user.nb_loose
-  matchs lost
+  matches lost
   %br/
-%p
   = current_user.nb_draw
-  matchs null
-%br/
+  matches null
+%p
 %p.text-center
   %strong
     Total points:
-    \#{current_user.points} pts
+    \#{current_user.points} Pts
 %br/
+
+
+
+
+
+
+
+
+
+

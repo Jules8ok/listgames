@@ -1,21 +1,35 @@
-.wrapper-grey.padded
-  .container
-    .row
-      .col-sm-6.col-sm-offset-3.col-xs-10{:class => "col-xs-offset-0.5"}
-        .text-center
-          %h2 Matches
-          - @matches.each do  |matche|
-            .card0
-              %h3
-                = matche.score
-              - if !matche.users.first.nil? && !matche.users.second.nil?
-                %p
-                  = matche.users.first.first_name
-                  \- #{matche.users.second.first_name}
-              - if !matche.game.nil?
-                %p
-                  = matche.game.title
-              \/
-              - if !matche.tournament.nil?
-                = matche.tournament.name
-              = link_to "See", match_path(matche)
+- if user_signed_in?
+  .wrapper-grey.padded
+    .container
+      .row
+        .col-sm-6.col-sm-offset-3.col-xs-10{:class => "col-xs-offset-0.5"}
+          .text-center
+            %h2 Matches
+            - @matches.each do  |matche|
+              .card0
+                %h3
+                  = matche.score
+                - if !matche.users.first.nil? && !matche.users.second.nil?
+                  %p
+                    = matche.users.first.first_name
+                    \- #{matche.users.second.first_name}
+                - if !matche.game.nil?
+                  %p
+                    = matche.game.title
+                \/
+                - if !matche.tournament.nil?
+                  = matche.tournament.name
+                = link_to "See", match_path(matche)
+- else
+  %br/
+  %br/
+  %br/
+  %h2.text-center You have to sign in or log in
+  %br/
+  %br/
+  .text-center
+    = link_to new_user_session_path do
+      %button.nav-but.btn#btn08= t(".sign_in", default: "LOGIN")
+
+  .lock
+    .unlocker

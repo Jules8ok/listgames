@@ -1,49 +1,63 @@
-%h2.text-center Tournaments
-%br/
-%br/
-%br/
-.text-center
-  .container
-    - @tournaments.each do  |tournament|
-      .see
-        .col-lg-4
-          .flip
-            .cardi
-              .face.front
-                = tournament.name
-              .face.back
-                - if current_user.address.nil?
-                - else
-                  .distance.row2= current_user.distance_from([tournament.latitude, tournament.longitude]).round(2)
-                  .distance.row2= "km the :"
+- if user_signed_in?
+  %h2.text-center Tournaments
+  %br/
+  %br/
+  %br/
+  .text-center
+    .container
+      - @tournaments.each do  |tournament|
+        .see
+          .col-lg-4
+            .flip
+              .cardi
+                .face.front
+                  = tournament.name
+                .face.back
+                  - if current_user.address.nil?
+                  - else
+                    .distance.row2= current_user.distance_from([tournament.latitude, tournament.longitude]).round(2)
+                    .distance.row2= "km the :"
 
-                .address.row1= tournament.date
-          = link_to "See", tournament_path(tournament)
-        %div
+                  .address.row1= tournament.date
+            = link_to "See", tournament_path(tournament)
+          %div
+    %br/
+    %br/
+    = link_to "Add a new tournament", new_tournament_path
+  %br/
+  #map{:style => "width: 100%; height: 400px;"}
+  - content_for(:after_js) do
+    = javascript_tag do
+      $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+      markers = handler.addMarkers(#{raw @hash.to_json});
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      if (markers.length == 0) {
+      handler.getMap().setZoom(2);
+      } else if (markers.length == 1) {
+      handler.getMap().setZoom(14);
+      }
+      });
+      });
+  :javascript
+    $('.flip').click(function(){
+      $(this).find('.cardi').addClass('flipped').mouseleave(function(){
+        $(this).removeClass('flipped');
+      });
+      return false;
+    });
+- else
   %br/
   %br/
-  = link_to "Add a new tournament", new_tournament_path
-%br/
-#map{:style => "width: 100%; height: 400px;"}
-- content_for(:after_js) do
-  = javascript_tag do
-    $(document).ready(function() {
-    var handler = Gmaps.build('Google');
-    handler.buildMap({ internal: { id: 'map' } }, function() {
-    markers = handler.addMarkers(#{raw @hash.to_json});
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-    if (markers.length == 0) {
-    handler.getMap().setZoom(2);
-    } else if (markers.length == 1) {
-    handler.getMap().setZoom(14);
-    }
-    });
-    });
-:javascript
-  $('.flip').click(function(){
-    $(this).find('.cardi').addClass('flipped').mouseleave(function(){
-      $(this).removeClass('flipped');
-    });
-    return false;
-  });
+  %br/
+  %h2.text-center You have to sign in or log in
+  %br/
+  %br/
+  .text-center
+    = link_to new_user_session_path do
+      %button.nav-but.btn#btn08= t(".sign_in", default: "LOGIN")
+
+  .lock
+    .unlocker

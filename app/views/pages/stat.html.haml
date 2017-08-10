@@ -62,4 +62,15 @@
             Match nul : #{a - b - c}
           %br/
 - else
+  %br/
+  %br/
+  %br/
   %h2.text-center You have to sign in or log in
+  %br/
+  %br/
+  .text-center
+    = link_to new_user_session_path do
+      %button.nav-but.btn#btn08= t(".sign_in", default: "LOGIN")
+
+  .lock
+    .unlocker

@@ -1,15 +1,29 @@
-.wrapper-grey.padded
-  .container
-    .row
-      .col-sm-6.col-sm-offset-3.col-xs-10{:class => "col-xs-offset-0.5"}
-        %h2.text-center Games
-        .container06
-          - @games.each do  |game|
-            .card0
-              %h3
-                = game.title
-              %p= game.description
-              = link_to "See", game_path(game)
-              = link_to "Delete", game_path(game), method: :delete, data: { |
-                confirm: "Are you sure?" }                                  |
-        = link_to "Add a new game", new_game_path
+- if user_signed_in?
+  .wrapper-grey.padded
+    .container
+      .row
+        .col-sm-6.col-sm-offset-3.col-xs-10{:class => "col-xs-offset-0.5"}
+          %h2.text-center Games
+          .container06
+            - @games.each do  |game|
+              .card0
+                %h3
+                  = game.title
+                %p= game.description
+                = link_to "See", game_path(game)
+                = link_to "Delete", game_path(game), method: :delete, data: { |
+                  confirm: "Are you sure?" }                                  |
+          = link_to "Add a new game", new_game_path
+- else
+  %br/
+  %br/
+  %br/
+  %h2.text-center You have to sign in or log in
+  %br/
+  %br/
+  .text-center
+    = link_to new_user_session_path do
+      %button.nav-but.btn#btn08= t(".sign_in", default: "LOGIN")
+
+  .lock
+    .unlocker

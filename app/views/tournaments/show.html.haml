@@ -6,11 +6,19 @@
     = current_user.first_name
     , you are already sign in! Go to the match index!
 .yolo
+
   .my_info.text-center#stat2
     =render "stat2"
+    #helloooo
+      - if user_signed_in?
+        - avatar_url = current_user.facebook_picture_url || "http://placehold.it/50x50"
+        = image_tag avatar_url, class: "avatar-bordered dropdown-toggle", id: "navbar-wagon-menu", " data-toggle" => "dropdown"
 
   .my_info.text-center
+    %h4.text-center Tournament Infos
     %p.info
+      %br/
+      %br/
       %span.strong Address;
       = @tournament.address
       %br/

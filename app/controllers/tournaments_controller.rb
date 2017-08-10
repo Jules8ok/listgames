@@ -28,6 +28,7 @@ class TournamentsController < ApplicationController
   end
 
   def edit
+    @game = Game.new
     @tournament = Tournament.find(params[:id])
   end
 

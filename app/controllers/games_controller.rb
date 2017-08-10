@@ -15,7 +15,10 @@ class GamesController < ApplicationController
 
   def create
     Game.create(params[:game])
-    redirect_to games_path
+    respond_to do |format|
+      format.js
+      format.html{redirect_to games_path}
+    end
   end
 
   def edit

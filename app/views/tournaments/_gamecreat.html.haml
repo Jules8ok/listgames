@@ -1,0 +1,7 @@
+- @games = Game.all
+%br
+%br
+- @games.each do |game|
+  %label= game.title
+  = check_box_tag "games[]", game.id
+  %br

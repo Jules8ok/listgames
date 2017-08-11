@@ -19,7 +19,8 @@
                     .distance.row2= "km the :"
 
                   .address.row1= tournament.date
-            = link_to "See", tournament_path(tournament)
+            %section.p10
+              %a{:href => tournament_path(tournament)} Show me!
           %div
     %br/
     %br/

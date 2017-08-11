@@ -19,16 +19,21 @@
     %p.info
       %br/
       %br/
-      %span.strong Address;
+      %span.h5 - Address -
+      %br/
       = @tournament.address
       %br/
-      %span.strong Max player;
+      %br/
+      %span.h5 - Max player -
+      %br/
       = @tournament.max_player
       %br/
-      %span.strong Games;
+      %br/
+      %span.h5 - Games -
       = @tournament.games.inject(""){|x,y| x + y.title + ", "}[0..-3]
       %br/
-      %span.strong Date;
+      %br/
+      %span.h5 - Date -
       = @tournament.date
 
       .text-center
@@ -36,20 +41,24 @@
           = link_to 'Edit', edit_tournament_path(@tournament)
           = link_to "Delete", tournament_path(@tournament), method: :delete, data: { |
           confirm: "Are you sure?" }   |
+          %br/
+        - if @tournament.close?
+        - else
+          %br/
+          =link_to "Sign in", sign_tournament_path, remote: true, class: "btn btn-primary blue bouton_position"
+        - if can? :update, @tournament
 
           - if @tournament.close?
           - else
-            = link_to 'Close', close_tournament_path(@tournament)
             %br/
-            %br/
-            =link_to "Sign in", sign_tournament_path, remote: true, class: "btn btn-primary bouton_position"
-        %br/
+            = link_to 'Close', close_tournament_path(@tournament), class: "btn red"
+
 
         %br
         =image_tag "ajax-loader1.gif",id: "load", style: "display:none"
         - if can? :update, @tournament
 
-          =link_to "Play tournament", play_games_tournament_path, remote: true, class: "btn btn-success bouton_position"
+          =link_to "Play tournament", play_games_tournament_path, remote: true, class: "btn green btn-success bouton_position"
           %br
           %br
           =image_tag "ajax-loader.gif",id: "load", style: "display:none"
@@ -66,3 +75,7 @@
 #stat1
   =render "stat1", tournament: @tournament
 
+:javascript
+  $('.btn').prepend('<div class="hover"><span></span><span></span><span></span><span></span><span></span></div>');
+
+  $('.social-btn').prepend('<div class="hover"><span></span><span></span><span></span><span></span></div>');

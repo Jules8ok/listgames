@@ -28,6 +28,7 @@ user.password_confirmation = 'password'
 user.address = "new-york "
 user.first_name = "Pierre"
 user.admin = true
+user.skip_confirmation_notification!
 user.skip_confirmation!
 user.save!
 user = User.new

@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   validates :first_name, presence: true
-  after_create :send_welcome_email
+
   # Include default devise modules. Others available are:
   # , :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

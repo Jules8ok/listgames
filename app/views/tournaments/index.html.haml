@@ -14,17 +14,19 @@
                   = tournament.name
                 .face.back
                   - if current_user.address.nil?
+                    .address.row1= tournament.date
                   - else
                     .distance.row2= current_user.distance_from([tournament.latitude, tournament.longitude]).round(2)
-                    .distance.row2= "km the :"
+                    .distance.row2= "km from your adress"
+            %section.wrapper2
+              %a.button13{:href => tournament_path(tournament)} See &rarr;
 
-                  .address.row1= tournament.date
-            %section.p10
-              %a{:href => tournament_path(tournament)} Show me!
-          %div
+
+
     %br/
     %br/
     = link_to "Add a new tournament", new_tournament_path
+
   %br/
   #map{:style => "width: 100%; height: 400px;"}
   - content_for(:after_js) do
@@ -49,6 +51,31 @@
       });
       return false;
     });
+
+
+
+
+        function hover() {
+      $(".button19").on("mouseenter", function() {
+        return $(this).addClass("hover");
+      });
+    }
+
+    function hoverOff() {
+      $(".button19").on("mouseleave", function() {
+        return $(this).removeClass("hover");
+      });
+    }
+
+    function active() {
+      $(".button19").on("click", function() {
+        return $(this).addClass("active");
+      });
+    }
+
+    hover();
+    hoverOff();
+    active();
 - else
   %br/
   %br/
